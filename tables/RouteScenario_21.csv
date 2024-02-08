@@ -1,0 +1,5 @@
+SUT,Phi1,Phi2,Phi3,Phi4_S_5,Phi4_S_10,Phi4_S_15,Phi5,Phi6,Phi7_T_5,Phi7_T_10,Phi7_T_15,Phi8_T_5,Phi8_T_10,Phi8_T_15,Phi9,Total
+Interfuser,0,0,1,0,0,0,1,1,1,0,0,1,1,1,1,8.0
+TCP,1,0,1,0,0,0,0,0,0,0,0,1,0,0,1,4.0
+LAV,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,5.0
+InterfuserTCPLAV,1,0,3,0,0,0,1,1,1,0,0,3,2,2,3,17.0
