@@ -23,3 +23,24 @@ This script will do the following:
 3) Check the properties specified in the paper, located in the properties.py file, using the scene graphs and the SG Monitor.
 4) Generate tables that show the property violations of the 3 Systems Under Test (SUTs) per Route and a Summary table that shows the total number of property violations per SUT.
 
+## Results
+| SUT             | Phi1 | Phi2 | Phi3 | Phi4_S_5 | Phi4_S_10 | Phi4_S_15 | Phi5 | Phi6 | Phi7_T_5 | Phi7_T_10 | Phi7_T_15 | Phi8_T_5 | Phi8_T_10 | Phi8_T_15 | Phi9 | Total |
+|-----------------|------|------|------|----------|-----------|-----------|------|------|----------|-----------|-----------|----------|-----------|-----------|------|-------|
+| Interfuser      | 3    | 0    | 10   | 0        | 0         | 0         | 3    | 9    | 10       | 5         | 5         | 10       | 5         | 5         | 7    | 72.0  |
+| TCP             | 6    | 0    | 10   | 0        | 0         | 0         | 2    | 6    | 5        | 3         | 3         | 8        | 0         | 0         | 8    | 51.0  |
+| LAV             | 6    | 1    | 10   | 0        | 0         | 0         | 3    | 2    | 8        | 6         | 5         | 10       | 6         | 1         | 7    | 65.0  |
+| Total           | 15   | 1    | 30   | 0        | 0         | 0         | 8    | 17   | 23       | 14        | 13        | 28       | 11        | 6         | 22   | 188.0 |
+
+## Property Violation Examples
+
+**Property 6**: "If the Ego vehicle is moving and there is no entity in the same lane as the Ego vehicle within 7 meters, and there is no red traffic light or stop sign controlling the Ego vehicle's lane, then the Ego vehicle should not stop."​ - violated by **Interfuser**
+
+![Interfuser violating property 6](interfuser.gif)
+
+**Property 9**: "Once the Ego vehicle detects a new stop signal controlling its lane, it must stop before passing the stop signal."​  - violated by **TCP**
+
+![TCP violating property 9](tcp.gif)
+
+**Property 7**: "If the Ego vehicle is not in a junction, then Ego vehicle cannot be in more than one lane for more than 15 seconds."​ - violated by **LAV**
+
+![LAV violating property 7](lav.gif)
