@@ -6,7 +6,6 @@ autopep8==2.0.4
 backcall==0.2.0
 backports.functools-lru-cache==1.6.5
 cachetools==5.3.1
-carla==0.9.10
 certifi==2023.7.22
 charset-normalizer==3.2.0
 cloudpickle==2.2.1
