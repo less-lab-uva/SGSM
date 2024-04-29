@@ -31,6 +31,10 @@ This script will do the following:
 | LAV             | 6    | 1    | 10   | 0        | 0         | 0         | 3    | 2    | 8        | 6         | 5         | 10       | 6         | 1         | 7    | 65.0  |
 | Total           | 15   | 1    | 30   | 0        | 0         | 0         | 8    | 17   | 23       | 14        | 13        | 28       | 11        | 6         | 22   | 188.0 |
 
+## Presentation video
+[<img src="https://img.youtube.com/vi/rLPEFzgEM-o/hqdefault.jpg" width="600" height="480"
+/>](https://www.youtube.com/embed/rLPEFzgEM-o)
+
 ## Property Violation Examples
 
 **Property 6**: "If the Ego vehicle is moving and there is no entity in the same lane as the Ego vehicle within 7 meters, and there is no red traffic light or stop sign controlling the Ego vehicle's lane, then the Ego vehicle should not stop."​ - violated by **Interfuser**
