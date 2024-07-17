@@ -31,6 +31,10 @@ This script will do the following:
 | LAV             | 6    | 1    | 10   | 0        | 0         | 0         | 3    | 2    | 8        | 6         | 5         | 10       | 6         | 1         | 7    | 65.0  |
 | Total           | 15   | 1    | 30   | 0        | 0         | 0         | 8    | 17   | 23       | 14        | 13        | 28       | 11        | 6         | 22   | 188.0 |
 
+## Presentation video
+[<img src="https://img.youtube.com/vi/rLPEFzgEM-o/hqdefault.jpg" width="600" height="480"
+/>](https://www.youtube.com/embed/rLPEFzgEM-o)
+
 ## Property Violation Examples
 
 **Property 6**: "If the Ego vehicle is moving and there is no entity in the same lane as the Ego vehicle within 7 meters, and there is no red traffic light or stop sign controlling the Ego vehicle's lane, then the Ego vehicle should not stop."​ - violated by **Interfuser**
@@ -44,3 +48,46 @@ This script will do the following:
 **Property 7**: "If the Ego vehicle is not in a junction, then Ego vehicle cannot be in more than one lane for more than 15 seconds."​ - violated by **LAV**
 
 ![LAV violating property 7](lav.gif)
+
+## Tables
+
+### Table 3: Intermediate variables used in Atomic Propositions 
+| Name           | DSL expression                                                           |
+|----------------|--------------------------------------------------------------------------|
+| egoLanes       | relSet(Ego, isIn)                                                       |
+| egoRoads       | relSet(egoLanes, isIn)                                                  |
+| egoJunctions   | relSet(egoRoads, isIn)                                                  |
+| oppLanes       | relSet(egoLanes, opposes)                                               |
+| offRoad        | filterByAttr(egoLanes, kind, $\lambda x : x = \text{offRoad}$)          |
+| rightLanes     | relSet(egoLanes, toRightOf)                                             |
+| steerRight     | filterByAttr(Ego, steer, $\lambda x : x > 0$)                           |
+| inEgoLane      | relSetR(egoLanes, isIn)\setminus \{Ego\}                                |
+| nearColl       | relSet(inEgoLane, near_coll)                                            |
+| superNear      | relSet(inEgoLane, super_near)                                           |
+| egoFasterS     | filterByAttr(Ego, speed, $\lambda x : x > S$)                           |
+| noThrottle     | filterByAttr(Ego, throttle, $\lambda x:x<\epsilon$)                     |
+| tLights        | filterByAttr(G, kind, $\lambda x : x =\text{trafficLight}$)             |
+| redLights      | filterByAttr(tLights, lightState, $\lambda x:x=\text{Red}$)             |
+| trafLightLns   | relSet(redLights, controlsTrafficOf)                                     |
+| stopSigns      | filterByAttr(G, kind, $\lambda x : x =\text{stopSign}$)                  |
+| stopSignLanes  | relSet(stopSigns, controlsTrafficOf)                                     |
+| egoStopped     | filterByAttr(Ego, speed, $\lambda x:x<\epsilon$)                         |
+| juncRoads      | relSetR(egoJunctions, isIn)                                             |
+
+### Table 4: Atomic Propositions
+| Atomic Prop.     | DSL expression                                      |
+|------------------|-----------------------------------------------------|
+| isJunction       | $\|egoJunctions\|>0$                                 |
+| isOppLane        | $\|oppLanes\|>0$                                     |
+| isOffRoad        | $\|offRoad\|>0$                                      |
+| isInRightLane    | $\|rightLanes\|=0$                                    |
+| isNotSteerRight | $\|steerRight\|=0$                                    |
+| isNearColl       | $\|nearColl\|>0$                                     |
+| isFasterThanS    | $\|egoFasterS\|=1$                                    |
+| isSuperNear      | $\|superNear\|>0$                                    |
+| isNoThrottle     | $\|noThottle\|=1$                                    |
+| isMultipleLanes  | $\|egoLanes\|>1$                                     |
+| hasRed           | $\|trafLightLns \cap egoLanes\|>0$                    |
+| hasStop          | $\|stopSignLanes \cap egoLanes\|>0$                   |
+| isStopped        | $\|egoStopped\|=1$                                    |
+| isOnlyJunction   | $\|egoRoads \setminus juncRoads\|=0$                  |
