@@ -41,14 +41,17 @@ def check_directory(dir_to_check, save_folder, threaded=False):
     #     else:
     #         sg_name_list = [p for i, p in enumerate(sg_name_list) if i % 10 == 0]
     print(f"{str(dir_to_check)}: Checking {len(sg_name_list)} files")
-    start = time.time()
+    total_time = []
     for sg_name in tqdm(sg_name_list, disable=threaded):
         sg = utils.load_sg(str(rsv_folder / sg_name))
+        start = time.time()
         m.check(sg, save_usage_information=True)
+        end = time.time()
+        total_time.append(end - start)
+
         # m.save_all_relevant_subgraphs(sg, sg_name.replace('.pkl', ''))
 
-    end = time.time()
-    print(f"{str(dir_to_check)} | Checked {len(sg_name_list)} SGs | Total time taken: {end - start:.2f} seconds | Average time per SG: {(end - start) / len(sg_name_list):.2f} seconds")
+    print(f"{str(dir_to_check)} | Checked {len(sg_name_list)} SGs | Total time taken: {sum(total_time):.4f} seconds | Average time per SG: {(sum(total_time)) / len(sg_name_list):.4f} seconds")
 
 
 def main():
