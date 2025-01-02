@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repository is for the [ICRA'24 paper](https://ieeexplore.ieee.org/abstract/document/10610973) "Specifying and Monitoring Safe Driving Properties with Scene Graphs". We have since published an extension of this work, available [here](https://www.sciencedirect.com/science/article/abs/pii/S0167642324001758), which has its own respository [here](https://github.com/less-lab-uva/ExtendingSGSM). The extended repository subsumes the functionality of this repository. We maintain this repository as-is to enable replication of the results from the ICRA'24 paper. For further discussions about the technique, please refer to the other repository.
+
 # Scene Graph Safety Monitoring (SGSM)
 
 This repository contains the paper and the code of "Specifying and Monitoring Safe Driving Properties with Scene Graphs" presented at ICRA 2024 in Yokohama, Japan. The code is written in Python and requires [conda](https://docs.anaconda.com/free/anaconda/install/linux/) and [7z](https://www.7-zip.org/download.html) to be installed. The code was tested using Ubuntu 20.04.
