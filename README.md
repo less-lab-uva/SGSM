@@ -1,5 +1,7 @@
 > [!NOTE]
 > This repository is for the [ICRA'24 paper](https://ieeexplore.ieee.org/abstract/document/10610973) "Specifying and Monitoring Safe Driving Properties with Scene Graphs". We have since published an extension of this work, available [here](https://www.sciencedirect.com/science/article/abs/pii/S0167642324001758), which has its own respository [here](https://github.com/less-lab-uva/ExtendingSGSM). The extended repository subsumes the functionality of this repository. We maintain this repository as-is to enable replication of the results from the ICRA'24 paper. For further discussions about the technique, please refer to the other repository.
+> [!IMPORTANT]  
+> This repository is under MIT License, but heavily relies on [LTLf2DFA](https://github.com/whitemech/LTLf2DFA) which is under LGPL-3.0 license, and [MONA](https://github.com/cs-au-dk/MONA) which is under GPL-2.0 license.
 
 # Scene Graph Safety Monitoring (SGSM)
 
